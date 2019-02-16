@@ -4,16 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "json-server": "json-server --watch ./json-server/db.js --port 3333",
     "dev": "webpack-dev-server --config=./webpack/config.dev.js --hot --inline",
     "build": "webpack --config=./webpack/config.prod.js",
     "storybook": "start-storybook -c './src/.stories' -p 3001"
   },
   "dependencies": {
-    "json-server": "^0.14.2",
     "react": "16.8.2",
     "react-dom": "16.8.2"
   },
   "devDependencies": {
+    "json-server": "^0.14.2",
     "@babel/core": "7.3.3",
     "@babel/plugin-proposal-class-properties": "7.3.3",
     "@babel/plugin-proposal-object-rest-spread": "7.3.2",
