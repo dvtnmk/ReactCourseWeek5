@@ -17,7 +17,7 @@ function Input({ success, error, value, onChange, label, inline, ...rest }) {
       <input
         className={selectMode(success, error)}
         value={value}
-        onChnage={onChange}
+        onChange={onChange}
         {...rest}
       />
     </div>
