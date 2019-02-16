@@ -10,14 +10,15 @@ function selectMode(success, error) {
   return "input";
 }
 
-function Input({ success, error, value, onChange, label, inline }) {
+function Input({ success, error, value, onChange, label, inline, ...rest }) {
   return (
-    <div style={{display: inline? 'inline-block' : 'block'}}>
+    <div style={{ display: inline ? "inline-block" : "block" }}>
       {label && <label className="label">{label}</label>}
       <input
         className={selectMode(success, error)}
         value={value}
         onChnage={onChange}
+        {...rest}
       />
     </div>
   );
