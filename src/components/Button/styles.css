@@ -1,4 +1,30 @@
 button.btn {
-  background-color: red;
+  background-color: rgb(214, 214, 214);
   padding: 10px 20px;
+  color: #444;
+  outline: none;
+  border: 1px solid rgb(139, 139, 139);
+  font-size: 0.95em;
+}
+
+button.btn:hover {
+  filter: brightness(1.1);
+}
+
+button.btn:active {
+  filter: brightness(0.8);
+}
+
+button.btn.primary, button.btn.danger {
+  color: #fff;
+}
+
+button.btn.primary {
+  background-color: rgb(33, 107, 177);
+  border: 1px solid rgb(22, 78, 131);
+}
+
+button.btn.danger {
+  background-color: rgb(167, 60, 45);
+  border: 1px solid rgb(119, 41, 30);
 }
