@@ -15,7 +15,7 @@ module.exports = (env, args) => {
       rules: [
         {
           test: /\.(jsx?)$/, ///\.(js|jsx)$/
-          exclude: /node_modules/,
+          exclude: [/node_modules/],
           loader: 'babel-loader',
           options: {
             presets: [
@@ -34,6 +34,11 @@ module.exports = (env, args) => {
             ]
           }
         },
+        {
+          test: /\.(css)$/,
+          exclude: /node_modules/,
+          use: ['style-loader', 'css-loader']
+        }
       ]
     },
     plugins: [
