@@ -4,3 +4,4 @@ import './Input'
 import './SignIn'
 import './SignUp'
 import './Segment'
+import './ProfileImage';
