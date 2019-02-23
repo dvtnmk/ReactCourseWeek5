@@ -2,21 +2,37 @@
   min-width: 100px;
   .title {
     padding: 14px;
-    background-color: red;
+    background-color: #f1f0f0;
+    border-bottom: 2px solid #dcdcdc;
+    display: flex;
+    justify-content: space-between;
     .titleText {
+      font-size: 1.6em;
       font-weight: bolder;
+    }
+    .closeButton {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .icon {
+        font-size: 1.6em;
+      }
     }
   }
   .content {
-    background-color: green;
+    background-color: #fdfdfd;
+    border-bottom: 2px solid #dcdcdc;
   }
   .actionsWrapper {
-    background-color: blue;
+    background-color: #ebebeb;
     .actionItem {
-    
     }
   }
   .container {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    flex: 1;
     padding: 13px;
   }
 }
