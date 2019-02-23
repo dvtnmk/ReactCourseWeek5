@@ -1,19 +1,12 @@
 import React from 'react'
+import {Button as AntButton} from 'antd'
 import "./styles.css"
-
-function selectClass(color){
-  switch(color){
-    case 'primary': return 'btn primary';
-    case 'danger': return 'btn danger'
-    default: return 'btn'
-  }
-}
 
 function Button({children, onClick, color, ...rest}) {
   return (
-    <button className={selectClass(color)} onClick={onClick} {...rest}>
+    <AntButton onClick={onClick} {...rest}>
       {children}
-    </button>
+    </AntButton>
   )
 }
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Icon } from "antd";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { API } from "../../configs";
+import './styles.scss';
 
 function onSigin(username, password) {
   return async function(e) {
@@ -30,25 +31,28 @@ function SignIn() {
   const [password, setPassword] = useState("");
 
   return (
-    <div>
+    <div className="signInContainer">
+      <h2>Login</h2>
+      <hr />
       <form onSubmit={onSigin(username, password)}>
         <Row>
-          <Col>
+          <Col className="col">
             <Input
               fluid
               value={username}
               placeholder="Username"
-              label="Username"
+              prefix={<Icon type="user"/>}
               onChange={e => setUsername(e.target.value)}
             />
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="col">
             <Input
               fluid
               type="password"
               value={password}
+              prefix={<Icon type="lock"/>}
               placeholder="Password"
               label="Password"
               onChange={e => setPassword(e.target.value)}
@@ -56,12 +60,15 @@ function SignIn() {
           </Col>
         </Row>
         <Row>
-          <Col span={12}>
-            <Button type="submit">SignIn</Button>
+          <Col span={12} className="col">
+            <Button block type="primary">
+              SignIn
+            </Button>
           </Col>
-          <Col span={12}>
-            {" "}
-            <Button type="button">SignUp</Button>
+          <Col span={12} className="col">
+            <Button block type="primary">
+              SignUp
+            </Button>
           </Col>
         </Row>
       </form>
