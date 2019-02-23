@@ -3,7 +3,22 @@ import { Row, Col, Icon } from "antd";
 import Button from "components/Button";
 import Input from "components/Input";
 import { API } from "configs";
-import './styles.scss';
+import "./styles.scss";
+
+const onChange = setter => e => {
+  const { value } = e.target;
+  setter(value);
+};
+
+function renderForm(inputFields) {
+  return inputFields.map((props, i) => (
+    <Row key={btoa(i)}>
+      <Col className="col">
+        <Input {...props} />
+      </Col>
+    </Row>
+  ));
+}
 
 function onSigin(email, password) {
   return async function(e) {
@@ -29,36 +44,27 @@ function onSigin(email, password) {
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  const inputFields = [
+    {
+      value: email,
+      placeholder: "E-mail",
+      prefix: <Icon type="mail" />,
+      onChange: onChange(setEmail)
+    },
+    {
+      value: password,
+      type: "password",
+      placeholder: "Password",
+      prefix: <Icon type="lock" />,
+      onChange: onChange(setPassword)
+    }
+  ];
   return (
     <div className="signInContainer">
       <h2>Sign in</h2>
       <hr />
       <form onSubmit={onSigin(email, password)}>
-        <Row>
-          <Col className="col">
-            <Input
-              fluid
-              value={email}
-              placeholder="E-mail"
-              prefix={<Icon type="mail"/>}
-              onChange={e => setEmail(e.target.value)}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col className="col">
-            <Input
-              fluid
-              type="password"
-              value={password}
-              prefix={<Icon type="lock"/>}
-              placeholder="Password"
-              label="Password"
-              onChange={e => setPassword(e.target.value)}
-            />
-          </Col>
-        </Row>
+        {renderForm(inputFields)}
         <Row>
           <Col span={12} className="col">
             <Button block type="primary">

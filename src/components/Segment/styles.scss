@@ -1,0 +1,26 @@
+.segment {
+  min-width: 100px;
+  padding: 10px;
+  .title {
+    padding: 14px;
+    margin: -10px;
+    background-color: red;
+    .titleText {
+      font-weight: bolder;
+    }
+  }
+  .content {
+    background-color: green;
+    margin: -10px;
+  }
+  .actionsWrapper {
+    background-color: blue;
+    margin: -10px;
+    .actionItem {
+    
+    }
+  }
+  .container {
+    padding: 13px;
+  }
+}

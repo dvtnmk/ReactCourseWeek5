@@ -32,8 +32,8 @@ const onChange = setter => e => {
 };
 
 function renderForm(inputFields) {
-  return inputFields.map(props => (
-    <Row>
+  return inputFields.map((props, i) => (
+    <Row key={btoa(i)}>
       <Col className="col">
         <Input {...props} />
       </Col>
@@ -41,14 +41,14 @@ function renderForm(inputFields) {
   ));
 };
 
-function SignIn() {
+function SignUp() {
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassowrd, setConfirmPassword] = useState("");
 
-  const inputField = [
+  const inputFields = [
     {
       value: email,
       placeholder: "E-mail",
@@ -88,7 +88,7 @@ function SignIn() {
       <h2>Sign up</h2>
       <hr />
       <form onSubmit={onSigin(email, password)}>
-        {renderForm(inputField)}
+        {renderForm(inputFields)}
         <Row>
           <Col className="col">
             <Button block type="primary">
@@ -101,4 +101,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
