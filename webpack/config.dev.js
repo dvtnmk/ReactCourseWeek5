@@ -34,8 +34,16 @@ module.exports = (env, args) => {
         },
         {
           test: /\.(css)$/,
-          exclude: /node_modules/,
+          // exclude: /node_modules/,
           use: ["style-loader", "css-loader"]
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            "style-loader", // creates style nodes from JS strings
+            "css-loader", // translates CSS into CommonJS
+            "sass-loader" // compiles Sass to CSS, using Node Sass by default
+          ]
         }
       ]
     },
@@ -51,7 +59,7 @@ module.exports = (env, args) => {
       port: 3000
     },
     resolve: {
-      modules: ["node_modules", path.resolve(__dirname, '../src')]
+      modules: ["node_modules", path.resolve(__dirname, "../src")]
     }
   };
 };

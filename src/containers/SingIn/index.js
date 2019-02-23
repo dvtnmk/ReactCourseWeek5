@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Row, Col } from "antd";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { API } from "../../configs";
@@ -17,11 +18,10 @@ function onSigin(username, password) {
         alert("Username or password incorrect!!!");
       }
     } catch (err) {
-      if(err.hasOwnProperty('response')){
+      if (err.hasOwnProperty("response")) {
         alert(err.response.error.message);
       }
     }
-    
   };
 }
 
@@ -32,21 +32,38 @@ function SignIn() {
   return (
     <div>
       <form onSubmit={onSigin(username, password)}>
-        <Input
-          value={username}
-          placeholder="Username"
-          label="Username"
-          onChange={e => setUsername(e.target.value)}
-        />
-        <Input
-          type="password"
-          value={password}
-          placeholder="Password"
-          label="Password"
-          onChange={e => setPassword(e.target.value)}
-        />
-        <Button type="submit">SignIn</Button>
-        <Button type="button">SignUp</Button>
+        <Row>
+          <Col>
+            <Input
+              fluid
+              value={username}
+              placeholder="Username"
+              label="Username"
+              onChange={e => setUsername(e.target.value)}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Input
+              fluid
+              type="password"
+              value={password}
+              placeholder="Password"
+              label="Password"
+              onChange={e => setPassword(e.target.value)}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12}>
+            <Button type="submit">SignIn</Button>
+          </Col>
+          <Col span={12}>
+            {" "}
+            <Button type="button">SignUp</Button>
+          </Col>
+        </Row>
       </form>
     </div>
   );
