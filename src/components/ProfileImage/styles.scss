@@ -1,0 +1,27 @@
+%image {
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.imageWrapper {
+  .image {
+    @extend %image;
+  }
+  .loading {
+    @extend %image;
+    background-color: #dcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@for $i from 1 through 10 {
+  .imageWrapper.x#{$i} {
+    width: 20px * $i;
+    height: 20px * $i;
+  }
+}

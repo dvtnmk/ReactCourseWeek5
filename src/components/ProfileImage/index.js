@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import './styles.scss';
 
-function ProfileImage({ src, icon, size = "medium", ...rest }) {
-  if (!/^(small|medium|large)$/.test(size)) {
-    size = "medium";
+function ProfileImage({ src, icon, size = "x3", ...rest }) {
+  if (!/^x[1-10]/.test(size)) {
+    size = "x3";
   }
   const [imageLoaded, setImageLoaded] = useState(null);
   useEffect(() => {
@@ -18,7 +19,7 @@ function ProfileImage({ src, icon, size = "medium", ...rest }) {
       {imageLoaded ? (
         <img className="image" src={imageLoaded} />
       ) : (
-        <div className="image">Loading...</div>
+        <div className="loading">Loading...</div>
       )}
     </div>
   );
