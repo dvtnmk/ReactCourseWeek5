@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Icon } from "antd";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import { API } from "../../configs";
+import Button from "components/Button";
+import Input from "components/Input";
+import { API } from "configs";
 import './styles.scss';
 
-function onSigin(username, password) {
+function onSigin(email, password) {
   return async function(e) {
     e.preventDefault();
     try {
       const result = await API.fetchAPI(
-        `/users?username=${username}&password=${password}`
+        `/users?email=${email}&password=${password}`
       );
       console.log(result);
       if (result.length > 0) {
         alert("LogedIn :)");
       } else {
-        alert("Username or password incorrect!!!");
+        alert("Email or password incorrect!!!");
       }
     } catch (err) {
       if (err.hasOwnProperty("response")) {
@@ -27,22 +27,22 @@ function onSigin(username, password) {
 }
 
 function SignIn() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   return (
     <div className="signInContainer">
-      <h2>Login</h2>
+      <h2>Sign in</h2>
       <hr />
-      <form onSubmit={onSigin(username, password)}>
+      <form onSubmit={onSigin(email, password)}>
         <Row>
           <Col className="col">
             <Input
               fluid
-              value={username}
-              placeholder="Username"
-              prefix={<Icon type="user"/>}
-              onChange={e => setUsername(e.target.value)}
+              value={email}
+              placeholder="E-mail"
+              prefix={<Icon type="mail"/>}
+              onChange={e => setEmail(e.target.value)}
             />
           </Col>
         </Row>
@@ -62,12 +62,12 @@ function SignIn() {
         <Row>
           <Col span={12} className="col">
             <Button block type="primary">
-              SignIn
+              Sign in
             </Button>
           </Col>
           <Col span={12} className="col">
             <Button block type="primary">
-              SignUp
+              Sign up
             </Button>
           </Col>
         </Row>
