@@ -2,7 +2,7 @@ import React from "react";
 import {Icon} from 'antd';
 import './styles.scss';
 
-function CheckBox({ onChange = () => {}, checked = true, icon, label = "" }) {
+function CheckBox({ onChange = () => {}, checked = false, icon, label = "" }) {
   return (
     <div className="checkboxWrapper" onClick={onChange}>
       <input type="checkbox" checked={checked} onChange={onChange} style={{ display: 'none' }} />
