@@ -5,12 +5,12 @@ import ProfileImage from 'components/ProfileImage';
 import './styles.scss';
 function PostSection() {
   return (
-    <Segment title="โพสต์" className="postSection">
+    <Segment title="โพสต์">
       <ViewFlex>
         <ViewFlex>
-          <ProfileImage size="x9" />
+          <ProfileImage size="x2" />
         </ViewFlex>
-        <ViewFlex fulid>
+        <ViewFlex fluid>
           <textarea className="postInputArea" />
         </ViewFlex>
       </ViewFlex>
