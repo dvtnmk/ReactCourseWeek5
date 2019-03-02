@@ -6,3 +6,4 @@ import './SignUp'
 import './Segment'
 import './ProfileImage';
 import './PostSection';
+import './CapsuleButton';

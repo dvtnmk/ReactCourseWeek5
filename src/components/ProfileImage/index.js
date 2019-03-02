@@ -21,9 +21,9 @@ function ProfileImage({ src, icon, size = "x4", ...rest }) {
       {imageLoaded ? (
         <img className="image" src={imageLoaded} />
       ) : (
-        <div className="loading"><span>Loading...</span></div>
+        <div className="loading"><span><Icon type="minus-circle" /></span></div>
       )}
-      {!icon && <div className="icon">{icon || <Icon type="plus" />}</div>}
+      {icon && <div className="icon">{icon || <Icon type="plus" />}</div>}
     </div>
   );
 }
