@@ -23,15 +23,23 @@ const postOptions = [
 
 function renderPostOptions(options) {
   return options.map(option => (
-    <ViewFlex>
+    <ViewFlex margin={false}>
       <CapsuleButton {...option} />
     </ViewFlex>
   ));
 }
 
+function FeedAction() {
+  return <span>test</span>
+}
+
+function StoriesAction() {
+  return <span>testaction2</span>
+}
+
 function PostSection() {
   return (
-    <Segment title="โพสต์">
+    <Segment title="โพสต์" actions={[<FeedAction />, <StoriesAction />]}>
       <ViewFlex column>
         <ViewFlex className="postSection">
           <ViewFlex>
@@ -47,7 +55,7 @@ function PostSection() {
             />
           </ViewFlex>
         </ViewFlex>
-        <ViewFlex>{renderPostOptions(postOptions)}</ViewFlex>
+        <ViewFlex margin={false}>{renderPostOptions(postOptions)}</ViewFlex>
       </ViewFlex>
     </Segment>
   );
