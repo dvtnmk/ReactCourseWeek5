@@ -1,0 +1,14 @@
+.view {
+  display: flex;
+  flex: 1;
+  .view {
+    display: flex;
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: auto;
+  }
+  .view.fluid {
+    display: flex;
+    flex: 1;
+  }
+}

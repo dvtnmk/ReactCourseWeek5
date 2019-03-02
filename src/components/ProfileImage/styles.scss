@@ -7,12 +7,33 @@
 }
 
 .imageWrapper {
+  position: relative;
+  user-select: none;
   .image {
     @extend %image;
   }
   .loading {
     @extend %image;
     background-color: #dcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 2rem;
+    }
+  }
+  .icon {
+    position: absolute;
+    right: 0 - (25%/2);
+    bottom: 0 - (25%/2);
+    background-color: #1890ff;
+    // padding: 5px;
+    width: 50%;
+    height: 50%;
+    border-radius: 100%;
+    border: 2px solid #fcfcfc;
+    font-size: 100%;
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
