@@ -108,7 +108,7 @@ function ShareAction() {
         </Dropdown>
       </ViewFlex>
       <ViewFlex fluid>
-        <Button type="primary" block />
+        <Button type="primary" block>แชร์</Button>
       </ViewFlex>
     </ViewFlex>
   );
