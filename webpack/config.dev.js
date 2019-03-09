@@ -1,11 +1,12 @@
 const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+require("@babel/polyfill");
 
 module.exports = (env, args) => {
   return {
     mode: "development",
-    entry: "./index.js",
+    entry: ["@babel/polyfill", "./index.js"],
     output: {
       filename: "app.js",
       path: path.join(__dirname, "../build"),
