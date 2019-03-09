@@ -41,7 +41,7 @@
 }
 
 @for $i from 1 through 10 {
-  .imageWrapper.x#{$i} {
+  .imageWrapper.x#{$i} { // .x1 ... x10
     width: 20px * $i;
     height: 20px * $i;
   }

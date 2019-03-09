@@ -1,0 +1,26 @@
+.headerWrapper {
+  .cover {
+    background-color: #fafafa;
+  }
+  .profileImageWrapper {
+    border: 3px solid #fff;
+    border-radius: 100%;
+  }
+  .subHeader {
+    box-shadow: 0 2px 15px -5px rgba(0, 0, 0, 0.3) inset;
+    padding: 10px 20px;
+    display: flex;
+    height: 80px;
+    align-items: flex-end;
+    border-bottom: 1px solid #777;
+    .infoWrapper {
+      display: flex;
+      flex: 1;
+      margin-left: 15px;
+      align-self: stretch;
+      span.name {
+        font-size: 2em;
+      }
+    }
+  }
+}

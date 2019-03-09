@@ -4,7 +4,7 @@ import { Layout } from "antd";
 import "./styles.scss";
 function LoginContainer() {
   return (
-    <div className="container">
+    <div className="registerContainer">
       <SignUp />
     </div>
   );
