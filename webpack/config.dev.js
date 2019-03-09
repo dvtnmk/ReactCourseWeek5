@@ -57,7 +57,8 @@ module.exports = (env, args) => {
       contentBase: path.join(__dirname, "../public"),
       hot: true,
       inline: true,
-      port: 3000
+      port: 3000,
+      historyApiFallback: true
     },
     resolve: {
       modules: ["node_modules", path.resolve(__dirname, "../src")]

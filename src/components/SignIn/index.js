@@ -3,6 +3,8 @@ import { Row, Col, Icon } from "antd";
 import Button from "components/Button";
 import Input from "components/Input";
 import { API } from "configs";
+import { Link } from "react-router-dom";
+import history from 'routes/history';
 import "./styles.scss";
 
 const onChange = setter => e => {
@@ -41,6 +43,10 @@ function onSigin(email, password) {
   };
 }
 
+function gotoSignUp() {
+  history.push('/signup');
+}
+
 function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -72,9 +78,11 @@ function SignIn() {
             </Button>
           </Col>
           <Col span={12} className="col">
-            <Button block type="primary">
+            {/* <Link to="/signup"> */}
+            <Button block type="primary" onClick={gotoSignUp}>
               Sign up
             </Button>
+            {/* </Link> */}
           </Col>
         </Row>
       </form>
