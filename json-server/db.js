@@ -5,7 +5,23 @@ module.exports = () => {
     password: '1234'
   }));
 
+  const privacies = [{
+    id: 1,
+    name: "สาธารณะ",
+    type: 1
+  },{
+    id: 2,
+    name: "เพื่อน",
+    type: 2
+  },
+  {
+    id: 3,
+    name: "เฉพาะฉัน",
+    type: 3
+  }]
+  
   return {
-    users: db
+    users: db,
+    privacies
   };
 };
