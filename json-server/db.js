@@ -8,15 +8,18 @@ module.exports = () => {
   const privacies = [{
     id: 1,
     name: "สาธารณะ",
+    icon: 'global',
     type: 1
   },{
     id: 2,
     name: "เพื่อน",
+    icon: 'user',
     type: 2
   },
   {
     id: 3,
     name: "เฉพาะฉัน",
+    icon: 'lock',
     type: 3
   }]
   

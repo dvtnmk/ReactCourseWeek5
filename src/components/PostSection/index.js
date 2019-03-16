@@ -1,29 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Segment from "components/Segment";
 import ViewFlex from "components/ViewFlex";
 import ProfileImage from "components/ProfileImage";
 import { Icon, Row, Col, Dropdown, Menu } from "antd";
 import CapsuleButton from "components/CapsuleButton";
 import CheckBox from "components/CheckBox";
+import { connect } from "react-redux";
 import Button from "components/Button";
 import "./styles.scss";
 
-const privacyMenu = (
-  <Menu onClick={() => {}}>
-    <Menu.Item key="public">
-      <Icon type="global" />
-      สาธารณะ
-    </Menu.Item>
-    <Menu.Item key="onlyMe">
-      <Icon type="lock" />
-      เฉพาะฉัน
-    </Menu.Item>
-    <Menu.Item key="friend">
-      <Icon type="user" />
-      เพื่อน
-    </Menu.Item>
-  </Menu>
-);
+// const privacyMenu = (
+//   <Menu onClick={() => {}}>
+//     <Menu.Item key="public">
+//       <Icon type="global" />
+//       สาธารณะ
+//     </Menu.Item>
+//     <Menu.Item key="onlyMe">
+//       <Icon type="lock" />
+//       เฉพาะฉัน
+//     </Menu.Item>
+//     <Menu.Item key="friend">
+//       <Icon type="user" />
+//       เพื่อน
+//     </Menu.Item>
+//   </Menu>
+// );
 
 const postOptions = [
   {
@@ -48,7 +49,7 @@ function renderPostOptions(options) {
   ));
 }
 
-function PrivacySelector() {
+function PrivacySelector({ privacyMenu }) {
   return (
     <Dropdown overlay={privacyMenu} trigger={["click"]}>
       <Button style={{ float: "right" }}>
@@ -58,26 +59,41 @@ function PrivacySelector() {
   );
 }
 
-function FeedAction() {
+function FeedAction({ privacies }) {
+  const [privacyMenu, setPrivacyMenu] = useState(null);
+
+  useEffect(() => {
+    const privaciesComponent = (
+      <Menu onClick={() => {}}>
+        {privacies.map(privacy => (
+          <Menu.Item key={privacy.name}>
+            <Icon type={privacy.icon} />
+            {privacy.name}
+          </Menu.Item>
+        ))}
+      </Menu>
+    );
+    setPrivacyMenu(privaciesComponent);
+  }, []);
   return (
     <div>
       <Row>
-        <Col span="12">
+        <Col span={12}>
           <CheckBox icon={<Icon type="notification" />} label="ฟีคข่าว" />
         </Col>
-        <Col span="12">
-          <PrivacySelector />
+        <Col span={12}>
+          <PrivacySelector privacyMenu={privacyMenu} />
         </Col>
       </Row>
     </div>
   );
 }
 
-function StoriesAction() {
+function StoriesAction({privacies}) {
   return (
     <div>
       <Row>
-        <Col span="12">
+        <Col span={12}>
           <CheckBox
             icon={
               <ProfileImage
@@ -89,8 +105,8 @@ function StoriesAction() {
             label="เรื่องราวของฉัน"
           />
         </Col>
-        <Col span="12">
-          <PrivacySelector />
+        <Col span={12}>
+          <PrivacySelector privacyMenu={privacies}/>
         </Col>
       </Row>
     </div>
@@ -100,25 +116,31 @@ function StoriesAction() {
 function ShareAction() {
   return (
     <ViewFlex>
-      <ViewFlex className="gapRight" >
-        <Dropdown trigger={['click']}>
+      <ViewFlex className="gapRight">
+        <Dropdown trigger={["click"]}>
           <Button>
             <Icon type="down" /> See More
           </Button>
         </Dropdown>
       </ViewFlex>
       <ViewFlex fluid>
-        <Button type="primary" block>แชร์</Button>
+        <Button type="primary" block>
+          แชร์
+        </Button>
       </ViewFlex>
     </ViewFlex>
   );
 }
 
-function PostSection() {
+function PostSection({ post }) {
   return (
     <Segment
       title="โพสต์"
-      actions={[<FeedAction />, <StoriesAction />, <ShareAction />]}
+      actions={[
+        <FeedAction privacies={post.privacies} />,
+        <StoriesAction privacies={post.privacies} />,
+        <ShareAction />
+      ]}
     >
       <ViewFlex column>
         <ViewFlex className="postSection">
@@ -141,4 +163,6 @@ function PostSection() {
   );
 }
 
-export default PostSection;
+const mapStateToProps = ({ post }) => ({ post });
+
+export default connect(mapStateToProps)(PostSection);

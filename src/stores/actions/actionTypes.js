@@ -2,7 +2,7 @@ const userActionType = {
 }
 
 const postActionType = {
-  SET_PRIVACIES: "GET_PRIVACIES"
+  SET_PRIVACIES: "SET_PRIVACIES"
 }
 
 export default {
