@@ -1,10 +1,11 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import PostSection from "components/PostSection";
+import Post from 'components/Post';
+// import PostSection from "components/PostSection";
 import store from "stores";
 import { Provider } from "react-redux";
-storiesOf("Post Section", module).add("Normally", () => (
+storiesOf("Social Post", module).add("default", () => (
   <Provider store={store}>
-    <PostSection />
+    <Post />
   </Provider>
 ));

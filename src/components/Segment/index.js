@@ -17,7 +17,7 @@ function renderActions(actions) {
 function Segment({ children, content, title = "", actions = [], onClose }) {
   return (
     <div className="segment">
-      <SegmentTitle onClose={onClose}>{title}</SegmentTitle>
+      {title && <SegmentTitle onClose={onClose}>{title}</SegmentTitle>}
       <SegmentContent>{children || content}</SegmentContent>
       {actions.length > 0 && renderActions(actions)}
     </div>
@@ -26,7 +26,7 @@ function Segment({ children, content, title = "", actions = [], onClose }) {
 
 Segment.defaultProps = {
   onClose: () => {}
-}
+};
 
 function SegmentTitle({ children, title = "", onClose, ...rest }) {
   return (
@@ -41,7 +41,7 @@ function SegmentTitle({ children, title = "", onClose, ...rest }) {
 
 SegmentTitle.defaultProps = {
   onClose: () => {}
-}
+};
 
 function SegmentContent({ children, content = "" }) {
   return (

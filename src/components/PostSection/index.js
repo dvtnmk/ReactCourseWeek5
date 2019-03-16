@@ -59,22 +59,28 @@ function PrivacySelector({ privacyMenu }) {
   );
 }
 
+const createPrivacyMenu = privacies => {
+  return (
+    <Menu onClick={() => {}}>
+      {privacies.map(privacy => (
+        <Menu.Item key={privacy.name}>
+          <Icon type={privacy.icon} />
+          {privacy.name}
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
+};
+
 function FeedAction({ privacies }) {
   const [privacyMenu, setPrivacyMenu] = useState(null);
 
   useEffect(() => {
-    const privaciesComponent = (
-      <Menu onClick={() => {}}>
-        {privacies.map(privacy => (
-          <Menu.Item key={privacy.name}>
-            <Icon type={privacy.icon} />
-            {privacy.name}
-          </Menu.Item>
-        ))}
-      </Menu>
-    );
-    setPrivacyMenu(privaciesComponent);
-  }, []);
+    // if (privacies.length > 0) {
+      const privaciesComponent = createPrivacyMenu(privacies);
+      setPrivacyMenu(privaciesComponent);
+    // }
+  }, [privacies]);
   return (
     <div>
       <Row>
@@ -89,7 +95,15 @@ function FeedAction({ privacies }) {
   );
 }
 
-function StoriesAction({privacies}) {
+function StoriesAction({ privacies }) {
+  const [privacyMenu, setPrivacyMenu] = useState(null);
+
+  useEffect(() => {
+    // if (privacies.length > 0) {
+      const privaciesComponent = createPrivacyMenu(privacies);
+      setPrivacyMenu(privaciesComponent);
+    // }
+  }, [privacies]);
   return (
     <div>
       <Row>
@@ -106,7 +120,7 @@ function StoriesAction({privacies}) {
           />
         </Col>
         <Col span={12}>
-          <PrivacySelector privacyMenu={privacies}/>
+          <PrivacySelector privacyMenu={privacyMenu} />
         </Col>
       </Row>
     </div>
