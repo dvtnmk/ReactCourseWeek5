@@ -28,10 +28,10 @@ function Root(props) {
   );
 }
 
-function withProvider(Component) {
+const withProvider = (Component) => (props) => {
   return (
     <Provider store={stores}>
-      <Component />
+      <Component {...props} />
     </Provider>
   );
 }

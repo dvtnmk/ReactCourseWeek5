@@ -1,4 +1,4 @@
-import actionTypes from './actionTypess';
+import actionTypes from './actionTypes';
 
 export {
   actionTypes
