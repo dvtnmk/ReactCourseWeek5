@@ -3,12 +3,10 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import middlewares from "./middlewares";
 import reducers from "./reducers";
 
-const mw = [
-  ...middlewares
-]
+const mw = [...middlewares];
 const store = createStore(
   combineReducers(reducers),
-  composeWithDevTools(applyMiddleware(...mw))
+  composeWithDevTools(applyMiddleware(...mw)) // applyMiddleware(mw1,mw2,mw3)
 );
 
 export default store;

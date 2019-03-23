@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Segment from "components/Segment";
 import ViewFlex from "components/ViewFlex";
 import ProfileImage from "components/ProfileImage";
@@ -59,6 +59,43 @@ function Post({ data = initialData }) {
     privacy,
     text
   } = data;
+  const [x, setX] = useState(null);
+  const [y, setY] = useState(null);
+  const [isToolTip, setToolTip] = useState(false);
+  const textRef = useRef();
+  const tooltipRef = useRef();
+  // function onMouseEnter() {
+  //   const {
+  //     style,
+  //     offsetTop: y,
+  //     offsetLeft: x,
+  //     clientHeight,
+  //     clientWidth
+  //   } = textRef.current;
+  //   setToolTip(true);
+  //   setY(y);
+  //   setX(x);
+  //   style.color = "red";
+  //   tooltipRef.current.style.left = x + "px";
+  //   tooltipRef.current.style.top = y + "px";
+  // }
+  function onMouseLeave() {}
+  function onMouseDown() {}
+  function onMouseOver() {
+    const {
+      style,
+      offsetTop: y,
+      offsetLeft: x,
+      clientHeight,
+      clientWidth
+    } = textRef.current;
+    setToolTip(true);
+    setY(y);
+    setX(x);
+    style.color = "red";
+    tooltipRef.current.style.left = x + "px";
+    tooltipRef.current.style.top = y + "px";
+  }
   return (
     <Segment
       // title="โพสต์"
@@ -68,6 +105,13 @@ function Post({ data = initialData }) {
         // <ShareAction />
       ]}
     >
+      <span
+        ref={tooltipRef}
+        hidden={!isToolTip}
+        style={{ position: "absolute", left: 0, top: 0 }}
+      >
+        X: {x} y: {y}
+      </span>
       <ViewFlex column>
         <div className="postHeader">
           <ViewFlex margin={false}>
@@ -89,7 +133,15 @@ function Post({ data = initialData }) {
         </div>
         <div className="postText">
           <div>
-            <h2>{text}</h2>
+            <h2
+              ref={textRef}
+              // onMouseEnter={onMouseEnter}
+              onMouseOver={onMouseOver}
+              onMouseLeave={onMouseLeave}
+              onMouseDown={onMouseDown}
+            >
+              {text}
+            </h2>
           </div>
         </div>
       </ViewFlex>
